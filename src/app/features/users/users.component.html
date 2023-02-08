@@ -1,32 +1,3 @@
-<!-- <form [formGroup] = "userform" (ngSubmit)="SaveEmployee()">
-    <div class="mb-3">
-    <label>identity</label>
-    <div class="input-group">
-        <input name="identity" class="form-control" formControlName = "identity">
-    </div>
-    </div>
-    <div class="mb-3">
-        <label>email</label>
-        <div class="input-group">
-            <input name="email" class="form-control" formControlName = "email">
-        </div>
-        </div>
-        <div class="mb-3">
-            <label>mobile</label>
-            <div class="input-group">
-                <input name="mobile" class="form-control" formControlName = "mobile">
-            </div>
-            </div>
-        <div class="mb-3">
-                <label>address</label>
-                <div class="input-group">
-                    <input name="address" class="form-control" formControlName = "address">
-                </div>
-                </div>
-    
-
-
-</form> -->
 <button type="button" class="btn btn-success btn-lg"  (click)="addNewItem()">Add New Item</button>
 <table border="1" align ="center">
     <tr >
@@ -36,6 +7,7 @@
         <th>number</th>
         <th>gender</th>
         <th>status</th>
+        <th>Action</th>
     </tr>
     <tr *ngFor="let obj of users">
         <td>{{obj.id}}</td>
@@ -43,11 +15,18 @@
         <td>{{obj.emailId}}</td>
         <td>{{obj.mobileNo}}</td>
         <td>
+            {{obj.gender}}
             <input type="radio" [value]="obj.gender" name="gender"> Male
             <input type="radio" [value]="obj.gender" name="gender"> Female
         </td>
         <td>
-            <input type="checkbox" [checked]="obj.status" required>{{obj.status ? 'Active':'InActive' }}
+            {{obj.status}}
+            <input type="checkbox" [checked]="obj.status == true || obj.status == 'true' ? true: false" required>{{obj.status ? 'Active':'InActive' }}
+        </td>
+        <td>
+            <button type="button" class="btn btn-primary btn-sm">Edit</button>
+            <button type="button" class="btn btn-success btn-sm">View</button>
+            <button type="button" class="btn btn-danger btn-sm">Delete</button>
         </td>
     </tr>
 </table>
@@ -114,3 +93,5 @@
     </div>
 </form>
   </ng-template>
+
+  

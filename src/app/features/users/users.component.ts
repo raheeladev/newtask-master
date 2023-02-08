@@ -34,8 +34,14 @@ export class UsersComponent implements OnInit {
   saveUserData() {
     console.log(this.userForm.value);
     let formData = this.userForm.value;
-    // formData.status = Boolean(formData.status);
     this.users.push(formData);
+    //show success messagae using toastr
+
+    //close modal popup
+    this.modalService.dismissAll();
+
+    //reset the form
+    this.userForm.reset();;
   }
 
   loadUserData() {
@@ -53,19 +59,5 @@ export class UsersComponent implements OnInit {
 
   addNewItem() {
     this.modalService.open(this.content, {ariaLabelledBy: 'modal-basic-title'});
-    // let text;
-    // let person = prompt('please enter your name:', 'raheela');
-    // if (person == null || person == '') {
-    //   text = 'enter your name.';
-    //   // text = this.userform=new FormGroup({
-    //   //   identity:new FormControl(),
-    //   //   email:new FormControl(),
-    //   //   mobile:new FormControl(),
-    //   //   address:new FormControl()
-
-    //   // })
-    // } else {
-    //   text = 'Hello' + person + '!How are you today';
-    // }
   }
 }
