@@ -1,0 +1,116 @@
+<!-- <form [formGroup] = "userform" (ngSubmit)="SaveEmployee()">
+    <div class="mb-3">
+    <label>identity</label>
+    <div class="input-group">
+        <input name="identity" class="form-control" formControlName = "identity">
+    </div>
+    </div>
+    <div class="mb-3">
+        <label>email</label>
+        <div class="input-group">
+            <input name="email" class="form-control" formControlName = "email">
+        </div>
+        </div>
+        <div class="mb-3">
+            <label>mobile</label>
+            <div class="input-group">
+                <input name="mobile" class="form-control" formControlName = "mobile">
+            </div>
+            </div>
+        <div class="mb-3">
+                <label>address</label>
+                <div class="input-group">
+                    <input name="address" class="form-control" formControlName = "address">
+                </div>
+                </div>
+    
+
+
+</form> -->
+<button type="button" class="btn btn-success btn-lg"  (click)="addNewItem()">Add New Item</button>
+<table border="1" align ="center">
+    <tr >
+        <th>id</th>
+        <th>name</th>
+        <th>email</th>
+        <th>number</th>
+        <th>gender</th>
+        <th>status</th>
+    </tr>
+    <tr *ngFor="let obj of users">
+        <td>{{obj.id}}</td>
+        <td>{{obj.name}}</td>
+        <td>{{obj.emailId}}</td>
+        <td>{{obj.mobileNo}}</td>
+        <td>
+            <input type="radio" [value]="obj.gender" name="gender"> Male
+            <input type="radio" [value]="obj.gender" name="gender"> Female
+        </td>
+        <td>
+            <input type="checkbox" [checked]="obj.status" required>{{obj.status ? 'Active':'InActive' }}
+        </td>
+    </tr>
+</table>
+
+
+<ng-template #content let-modal>
+    <form [formGroup]="userForm" (ngSubmit)="saveUserData()"> 
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <div class="mb-3">
+            <label>id</label>
+            <div class="input-group">
+                <input name="id" class="form-control" formControlName="id"  >
+                
+            </div>
+            </div>
+        <div class="mb-3">
+            <label>name</label>
+            <div class="input-group">
+                <input name="name" class="form-control" formControlName="name"  >
+                
+            </div>
+            </div>
+        <div class="mb-3">
+            <label>email</label>
+            <div class="input-group">
+                <input name="email" class="form-control" formControlName="emailId">
+                <!-- <span ngIf="f[]" class="errorMessage">enter user email</span> -->
+
+            </div>
+        </div>
+        <div class="mb-3">
+            <label>mobile</label>
+            <div class="input-group">
+                <input name="mobile" class="form-control" formControlName="mobileNo">
+            </div>
+            </div>
+        <div class="mb-3">
+                <label>gender</label>
+                <br>
+                <br>
+                    <input type="radio"  name="gender" value="Male" formControlName="gender"> Male
+                    <input type="radio"  name="gender" value="Female" formControlName="gender"> Female
+                
+                </div>
+                <div class="mb-3">
+                    <label>status</label>
+                    <br>
+                    <br>
+                    <div>
+                        <input type="radio"  name="status" value="true" formControlName="status"> Active
+                        <input type="radio"  name="status" value="false" formControlName="status"> Inactive
+
+                        <!-- <input type="checkbox" [checked]="obj.status" required> -->
+                    </div>
+                    </div>
+      
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-outline-dark">Save</button>
+    </div>
+</form>
+  </ng-template>
