@@ -11,6 +11,7 @@ export class UsersComponent implements OnInit {
   @ViewChild("content") content:any;
   users: any;
   userForm!: FormGroup;
+  singlePostData:any;
   
   constructor(private modalService: NgbModal) {
     this.userForm = new FormGroup({
@@ -60,4 +61,23 @@ export class UsersComponent implements OnInit {
   addNewItem() {
     this.modalService.open(this.content, {ariaLabelledBy: 'modal-basic-title'});
   }
+  // deletePost(deleteModal:any){
+  //   // this.singlePostData = postItem;
+  //   // console.log(postItem.id);
+  //   // console.log('delete method is called');
+  //   this.modalService.open(deleteModal, {ariaLabelledBy: 'modal-basic-title'});
+  //  }
+  
+   deleteData(){
+    
+   }
+
+   viewData(){
+
+   }
+
+   editData(){
+
+   }
+
 }

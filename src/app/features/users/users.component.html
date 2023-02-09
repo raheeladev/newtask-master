@@ -16,20 +16,35 @@
         <td>{{obj.mobileNo}}</td>
         <td>
             {{obj.gender}}
-            <input type="radio" [value]="obj.gender" name="gender"> Male
-            <input type="radio" [value]="obj.gender" name="gender"> Female
+            <input type="radio" [value]="obj.gender" name="Male"> Male
+            <input type="radio" [value]="obj.gender" name="Female"> Female
         </td>
         <td>
             {{obj.status}}
-            <input type="checkbox" [checked]="obj.status == true || obj.status == 'true' ? true: false" required>{{obj.status ? 'Active':'InActive' }}
+            <input type="checkbox" [checked]="obj.status == true || obj.status == 'false' ? true: false" required>{{obj.status ? 'Active':'InActive' }}
         </td>
         <td>
-            <button type="button" class="btn btn-primary btn-sm">Edit</button>
-            <button type="button" class="btn btn-success btn-sm">View</button>
-            <button type="button" class="btn btn-danger btn-sm">Delete</button>
+            <button type="button" class="btn btn-primary btn-sm" (click)="editData()">Edit</button>
+            <button type="button" class="btn btn-success btn-sm" (click)="viewData()">View</button>
+            <button type="button" class="btn btn-danger btn-sm" (click)="deleteData()">Delete</button>
         </td>
     </tr>
 </table>
+
+<!-- <ng-template #deleteModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Delete Confirmation</h4>
+      <button type="button" class="btn-close"  (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <h3>Are you sure want to delete this record?</h3>
+      {{singlePostData | json}}
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="deletePostData()">Yes</button>
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">No</button>
+    </div>
+  </ng-template> -->
 
 
 <ng-template #content let-modal>
