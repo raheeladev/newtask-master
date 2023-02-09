@@ -9,7 +9,7 @@
         <th>status</th>
         <th>Action</th>
     </tr>
-    <tr *ngFor="let obj of users">
+    <tr *ngFor="let obj of users; let i = index">
         <td>{{obj.id}}</td>
         <td>{{obj.name}}</td>
         <td>{{obj.emailId}}</td>
@@ -24,9 +24,9 @@
             <input type="checkbox" [checked]="obj.status == true || obj.status == 'false' ? true: false" required>{{obj.status ? 'Active':'InActive' }}
         </td>
         <td>
-            <button type="button" class="btn btn-primary btn-sm" (click)="editData()">Edit</button>
-            <button type="button" class="btn btn-success btn-sm" (click)="viewData()">View</button>
-            <button type="button" class="btn btn-danger btn-sm" (click)="deleteData()">Delete</button>
+            <button type="button" class="btn btn-primary btn-sm" (click)="editData(i, obj)">Edit</button>
+            <button type="button" class="btn btn-success btn-sm" (click)="viewData(i, obj)">View</button>
+            <button type="button" class="btn btn-danger btn-sm" (click)="deleteData(i, obj)">Delete</button>
         </td>
     </tr>
 </table>
@@ -50,7 +50,7 @@
 <ng-template #content let-modal>
     <form [formGroup]="userForm" (ngSubmit)="saveUserData()"> 
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+      <h4 class="modal-title" id="modal-basic-title">{{isEdit ? 'Update User':'Add New User'}}</h4>
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
@@ -104,9 +104,23 @@
       
     </div>
     <div class="modal-footer">
-      <button type="submit" class="btn btn-outline-dark">Save</button>
+      <button type="submit" class="btn btn-outline-dark">{{isEdit ? 'Update':'Save'}}</button>
     </div>
 </form>
   </ng-template>
 
-  
+  <!-- view user data modal -->
+  <ng-template #userViewModal let-modal>
+    
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">User Details</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        {{userDetails | json}}
+      
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Cross click')">Close</button>
+    </div>
+  </ng-template>
